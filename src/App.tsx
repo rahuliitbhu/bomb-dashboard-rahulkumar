@@ -18,6 +18,8 @@ import Popups from './components/Popups';
 import useChainId from './hooks/useChainId';
 //import Regulations from './views/Regulations/Regulations';
 import {RefreshContextProvider} from './contexts/RefreshContext';
+import Bank from './views/Bank';
+
 
 const Home = lazy(() => import('./views/Home'));
 const Farm = lazy(() => import('./views/Farm'));
@@ -25,12 +27,14 @@ const Boardroom = lazy(() => import('./views/Boardroom'));
 const Bond = lazy(() => import('./views/Bond'));
 const Xbomb = lazy(() => import('./views/Stake'));
 const Supply = lazy(() => import('./views/Supply'));
-// const SBS = lazy(() => import('./views/Sbs'));
-// const Liquidity = lazy(() => import('./views/Liquidity'));
+const Dashboard =lazy(()=>import('./views/Dashboard'));
+const SBS = lazy(() => import('./views/Sbs'));
+const Liquidity = lazy(() => import('./views/Liquidity'));
+const Stake = lazy(() => import('./views/Stake'));
 
 const NoMatch = () => (
   <h3 style={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}>
-    URL Not Found. <a href="/">Go back home.</a>
+    URL Not Found. {<a href="/">Go back home.</a>}
   </h3>
 );
 
@@ -55,6 +59,9 @@ const App: React.FC = () => {
             <Route path="/farm">
               <Farm />
             </Route>
+            <Route path="/bank">
+              <Bank />
+            </Route>
             <Route path="/boardroom">
               <Boardroom />
             </Route>
@@ -64,18 +71,24 @@ const App: React.FC = () => {
             <Route path="/xbomb">
               <Xbomb />
             </Route>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
             <Route path="/supply">
               <Supply />
             </Route>
-            {/* <Route path="/sbs">
+            <Route path="/stake">
+              <Stake />
+            </Route>
+             <Route path="/sbs">
               <SBS />
-            </Route> */}
+            </Route> 
             {/* <Route path="/regulations">
               <Regulations />
             </Route> */}
-            {/* <Route path="/liquidity">
+            <Route path="/liquidity">
               <Liquidity />
-            </Route> */}
+            </Route> 
             <Route path="*">
               <NoMatch />
             </Route>
