@@ -84,19 +84,120 @@ code {
 .navLink:hover {
   color: #f9d749 !important;
 }
+.mycard{
+  background: rgba(35, 40, 75, 0.75);
+border: 1px solid #728CDF;
+backdrop-filter: blur(5px);
+/* Note: backdrop-filter has minimal browser support */
 
+border-radius: 10px;
+  margin-top: 30px;
+  height:220px;
+  width:700px;
+  justify-content: space-between;
+}
+
+.mybackcolor{
+  background-color:'red';
+}
+.mybutton{
+  border: solid 10px;
+  background-color: #11b72d !important;
+  height: 15px;
+  font-size: 0.8rem !important;
+
+}
+.mybasecard{
+
+ /* background: rgba(35, 40, 75, 0.75);*/
+ background-color:transparent;
+
+
+/* Note: backdrop-filter has minimal browser support */
+
+border-radius: 10px;
+}
+.mysecondcard{
+
+/* Note: backdrop-filter has minimal browser support */
+
+border-radius: 10px;
+  margin-top: 0px;
+  height:350px;
+  width:400px;
+}
+
+
+.mybnt1{
+  background: rgba(255, 255, 255, 0.5) !important;
+border: 1px solid #728CDF !important;
+backdrop-filter: blur(12.5px) !important;
+font-size: 1rem !important;
+height: 20px;
+color: #137feb !important;
+
+}
+
+
+.mybtn2{
+  background: rgba(255, 255, 255, 0.5) !important;
+border: 1px solid #728CDF !important;
+backdrop-filter: blur(12.5px) !important;
+font-size: 1rem !important;
+height: 20px;
+color: #f6f7f8 !important;
+}
+.mybtn3{
+  
+  background: radial-gradient(59345.13% 4094144349.28% at 39511.5% -2722397851.45%, rgba(0, 245, 171, 0.5) 0%, rgba(0, 173, 232, 0.5) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */ !important;
+  border: 1px solid #728CDF !important;
+font-size: 1rem !important;
+height: 20px;
+color: #f6f7f8 !important;
+}
+.btncolor{
+  background-color: #f9d749;
+}
 .shinyButton {
-  margin-top: 5px;
+  margin-top: 100px;
   padding-top: 5px;
   padding-bottom: 5px;
 
-  border-radius: 15px;
+  border-radius: 50px;
+  font-size: 1rem !important;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 20px;
+  border: solid 10px;
+  border-color: #fff;
+  border-radius: 300px;
+  background-color: #d7d5ce !important;
   font-size: 1rem !important;
   padding-left: 5px;
-  color: #f9d749 !important;
-  box-shadow: 0px 0px 5px 0px rgba(251, 221, 76, 1);
+  
+  color: #0c0c0c !important;
 }
 
+.mythirdcard{
+  background: rgba(35, 40, 75, 0.75);
+border: 1px solid #728CDF;
+backdrop-filter: blur(5px);
+/* Note: backdrop-filter has minimal browser support */
+
+border-radius: 10px;
+  
+  height: 500px;
+}
+
+.temp
+{
+  background: rgba(35, 40, 75, 0.75);
+border: 1px solid #728CDF;
+backdrop-filter: blur(5px);
+/* Note: backdrop-filter has minimal browser support */
+
+border-radius: 10px;
+}
 .shinyButtonGreen {
   margin-top: 5px;
   padding-top: 5px;
@@ -110,9 +211,17 @@ code {
 }
 
 .shinyButtonDisabled {
-  border-radius: 15px;
-
-  color: grey !important;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 20px;
+  border: solid 10px;
+  border-color: #fff;
+  border-radius: 300px;
+  background-color: #d7d5ce !important;
+  font-size: 1rem !important;
+  padding-left: 5px;
+  
+  color: #0a0a0a !important;
   box-shadow: 0px 0px 5px 0px grey;
 }
 
@@ -129,12 +238,15 @@ code {
 .shinyButtonSecondary {
   padding-top: 5px;
   padding-bottom: 5px;
-
-  border-radius: 15px;
+  height: 20px;
+  border: solid 10px;
+  border-color: #fff;
+  border-radius: 300px;
+  background-color: #d7d5ce !important;
   font-size: 1rem !important;
   padding-left: 5px;
-  background-color: #f9d749 !important;
-  color: #171923 !important;
+  
+  color: #131313 !important;
   /* box-shadow: 0px 0px 5px 0px rgba(251,221,76,1); */
 }
 
