@@ -20,7 +20,7 @@ import { Alert } from '@material-ui/lab';
 import useTreasuryAllocationTimes from '../../hooks/useTreasuryAllocationTimes';
 
 import HomeImage from '../../assets/img/background.jpg';
-import { Grid, Box, Card, CardContent, Button, Typography } from '@material-ui/core';
+import { Grid, Box, Card, CardContent, Button, Typography, Divider } from '@material-ui/core';
 import { Helmet } from 'react-helmet';
 import { Label, Title } from '@material-ui/icons';
 import TokenSymbol from '../../components/TokenSymbol';
@@ -158,6 +158,10 @@ const Bond: React.FC = () => {
            <Mytitle>
             Bomb Finance Summary
            </Mytitle>
+          
+           <hr
+           style={{border:"0.5px solid rgba(195, 197, 203, 0.75);"}}
+           ></hr>
            {/* here is my table */}
            
 
@@ -217,18 +221,27 @@ const Bond: React.FC = () => {
              
             
              <Div3>
+                 <div >
+                 <Typography style={{color:'white',fontSize:"10px",marginLeft:"50px"}}>Current Epoch</Typography>
+                  <Typography style={{color:'white',fontSize:"20px",marginLeft:"65px"}}>{Number(currentEpoch)}</Typography>
                  
-             <Typography style={{color:'white',fontSize:"10px"}}>Current Epoch</Typography>
-                  <Typography style={{color:'white',fontSize:"20px"}}>{Number(currentEpoch)}</Typography>
+             
+                  <hr
+           style={{border:"0.5px solid rgba(195, 197, 203, 0.75);",width:"180px"}}
+           ></hr>
                   <Typography style={{color:'white',fontSize:"20px"}}><ProgressCountdown   base={moment().toDate()} hideBar={true} deadline={to} description="Next Epoch" /></Typography>
-                  <Typography style={{color:'white',fontSize:"10px"}}>Next Epoch</Typography>
-                     
-                     
-                  <Typography style={{color:'white',fontSize:"5px"}}>TVL</Typography>
-                     <Typography>{TVL}</Typography>
+                  <Typography style={{color:'white',fontSize:"10px",marginLeft:"55px"}}>Next Epoch</Typography>
+                  <hr
+           style={{border:"0.5px solid rgba(195, 197, 203, 0.75);",width:"100px"}}
+           ></hr>
+                     <div style={{display:'flex',marginLeft:"55px"}}><Typography style={{color:'white',fontSize:"10px",marginTop:"5px"}}>TVL:</Typography>
+                     <Typography style={{color:"green"}}>${TVL}</Typography></div>
+
                 
                {/* <CountUp style={{ fontSize: '25px' }} end={TVL} separator="," prefix="$" /> */}
  
+                 </div>
+                 
                    </Div3>
               
      
