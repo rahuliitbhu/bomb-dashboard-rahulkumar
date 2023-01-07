@@ -165,16 +165,16 @@ const Bond: React.FC = () => {
                   }} href='#'>Read Investment Stratergy {`>`} </a>
               <div  style={{width:"700px" ,marginTop:"10px"}}> 
                  
-                  <Button  style={{height:"50px"}} fullWidth className='mybtn3' >Invest Now</Button>
+                  <Button href='https://bombbshare.medium.com/the-bomb-cycle-how-to-print-forever-e89dc82c12e5' style={{height:"50px"}} fullWidth className='mybtn3' >Invest Now</Button>
                 </div>
                 <div style={{display:'flex'}}>
                 <div style={{width:"342px",marginTop:"5px",}}>
-                  <Button style={{height:"50px"}} fullWidth className='mybtn2 '>Chat on Discord</Button>
+                  <Button href='https://discord.bomb.money' style={{height:"50px"}} fullWidth className='mybtn2 '>Chat on Discord</Button>
                 </div>
                 <div style={{marginLeft:"15px",
                 marginTop:"5px",
                 width:"342px"}}>
-                  <Button style={{height:"50px"}} fullWidth className='mybtn2 '>Read Docs</Button>
+                  <Button href='https://docs.bomb.money/welcome-start-here/readme' style={{height:"50px"}} fullWidth className='mybtn2 '>Read Docs</Button>
                 </div>
                 </div>
               </div>
