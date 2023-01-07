@@ -223,7 +223,7 @@ const Bond: React.FC = () => {
             <div>
             <Mytitle>
            <div>Boardroom</div> 
-           <Button  href='https://discord.bomb.money' className='mybutton'>Recommended</Button>
+           <Button   className='mybutton'>Recommended</Button>
 
            </Mytitle>
            <Head
