@@ -116,7 +116,7 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
                 <Button
                   className={disabled ? 'shinyButtonDisabled' : 'shinyButton'}
                   onClick={onPresent}
-                 // disabled={disabled}
+                  disabled={disabled}
                 >
                   {'Reedeem'}
                 </Button>
