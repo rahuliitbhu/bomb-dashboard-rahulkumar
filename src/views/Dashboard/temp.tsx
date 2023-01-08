@@ -127,7 +127,9 @@ const Bond: React.FC = () => {
                   disabled={!bondStat || isBondRedeemable}
                 />
              
- 
+             <hr
+           style={{border:"0.5px solid rgba(195, 197, 203, 0.75);",width:"520px",marginLeft:"-50px"}}
+           ></hr>
        
 
             

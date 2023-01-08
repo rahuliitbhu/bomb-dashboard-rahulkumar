@@ -285,7 +285,8 @@ const Bond: React.FC = () => {
            </Div1>
              
            <hr
-           style={{border:"0.5px solid rgba(195, 197, 203, 0.75);"}}
+           
+           style={{border:"0.5px solid #00ADE8",width:"1500px",marginLeft:"-100px"}}
            ></hr>
                 
             </StyledBond>
@@ -309,7 +310,6 @@ const Bond: React.FC = () => {
 
 
 const StyledBond = styled.div`
-justify-content: space-between;
 
   @media (max-width: 768px) {
     width: 100%;
