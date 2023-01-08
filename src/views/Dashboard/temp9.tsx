@@ -251,6 +251,9 @@ const Bond: React.FC = () => {
   
     
           </div>
+          <hr
+           style={{border:"0.5px solid rgba(195, 197, 203, 0.75);",width:"620px"}}
+           ></hr>
            
           <div style={{float:'right'}}>
           <Typography >Total Staked:<TokenSymbol symbol="BSHARE" size={20} />{getDisplayBalance(totalStaked)} </Typography>

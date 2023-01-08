@@ -114,8 +114,8 @@ const Bond: React.FC = () => {
 
                 <ExchangeCard
                   action="Purchase BBond"
-                  fromToken={bombFinance.BBOND}
-                  fromTokenName="BBOND"
+                  fromToken={bombFinance.BOMB}
+                  fromTokenName="BOMB"
                   toToken={bombFinance.BBOND}
                   toTokenName="BBOND"
                   priceDesc={
