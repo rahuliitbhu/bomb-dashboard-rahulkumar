@@ -86,6 +86,18 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
           {priceDesc}
           </div>
          </Div1>
+         {
+  /**
+   * toTokenName!="BOMB"  ? (
+                <Button
+                className={disabled ? 'shinyButtonDisabled' : 'shinyButton'}
+                onClick={onPresent}
+                disabled={disabled}
+              >
+                {`Purchase`}
+              </Button>
+   */
+}
 
           {/*<StyledDesc>{priceDesc}</StyledDesc>*/}
         
@@ -93,17 +105,14 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
 
            
           <StyledCardActions>
-            {!account ? (
-              <>
-              {(approveStatus !== ApprovalState.APPROVED || !disabled)&& toTokenName!="BOMB"  ? (
+            {toTokenName!="BOMB"  ? 
                 <Button
-                  className="shinyButton"
-                 // disabled={(approveStatus !== ApprovalState.PENDING || approveStatus === ApprovalState.UNKNOWN)}
-                  onClick={() => catchError(approve(), `Unable to approve ${fromTokenName}`)}
-                >
-                  {`Purchase`}
-                </Button>
-              ) : (
+                className={disabled ? 'shinyButtonDisabled' : 'shinyButton'}
+                onClick={onPresent}
+                disabled={disabled}
+              >
+                {`Purchase`}
+              </Button>: 
                 <Button
                   className={disabled ? 'shinyButtonDisabled' : 'shinyButton'}
                   onClick={onPresent}
@@ -111,15 +120,10 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
                 >
                   {'Reedeem'}
                 </Button>
-              )}
-              </>
-            ) : (
-              
-            <>
-            <UnlockWallet/>
-            </>
+              }
+        
             
-            )}
+            
           </StyledCardActions>
           </Div2>
         </StyledCardContentInner>
