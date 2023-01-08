@@ -216,7 +216,10 @@ const Bond: React.FC = () => {
 
             </Div4>
   
-    
+            <hr
+           style={{border:"0.5px solid rgba(195, 197, 203, 0.75);",width:"1000px",marginLeft:"50px"}}
+           ></hr>
+           
           </div>
            
 

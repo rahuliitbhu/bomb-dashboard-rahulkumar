@@ -211,16 +211,19 @@ const Bond: React.FC = () => {
             
    
           </Head>
+
                     </div>   
-        
+          
 
             </Div4>
   
-    
+            <hr
+           style={{border:"0.5px solid rgba(195, 197, 203, 0.75);",width:"1000px",marginLeft:"50px"}}
+           ></hr>
+           
           </div>
            
-
-           
+          
 
            {/* here is my table */}
      
@@ -276,12 +279,14 @@ const Bond: React.FC = () => {
 
             </Div2>
             </div>
-
+          
 
 
            </Div1>
              
-     
+           <hr
+           style={{border:"0.5px solid rgba(195, 197, 203, 0.75);"}}
+           ></hr>
                 
             </StyledBond>
             </CardContent>

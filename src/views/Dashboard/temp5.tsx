@@ -179,10 +179,12 @@ const Bond: React.FC = () => {
               </Button>
 
             </Div4>
-              <Temp3/>
-              
          
-          <Temp4/>
+            <Temp3/>
+        
+        <Temp4/>
+     
+            
         
             </StyledBond>
             </CardContent>
@@ -203,7 +205,7 @@ const Bond: React.FC = () => {
 
 
 const StyledBond = styled.div`
-height:800px;
+
 
   @media (max-width: 768px) {
     width: 100%;
