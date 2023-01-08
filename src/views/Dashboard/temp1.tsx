@@ -305,7 +305,7 @@ line-height: 30px;
 
 
 color: #FFFFFF;
-margin:auto;
+margin-left:450px;
 `
 
 const Div1 = styled.div`
