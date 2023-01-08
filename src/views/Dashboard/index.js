@@ -1,2 +1,2 @@
 //this is index file
-export {default} from './temp6'
+export {default} from './Dashboard'

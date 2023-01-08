@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useMemo} from 'react';
-import Page from '../../components/Page';
+import Page from '../../components/Page copy';
 import {createGlobalStyle} from 'styled-components';
 import {Route, Switch, useRouteMatch} from 'react-router-dom';
 import PageHeader from '../../components/PageHeader';
@@ -54,11 +54,9 @@ import useStakedBalance from '../../hooks/useStakedBalance';
 
 import useHarvest from '../../hooks/useHarvest';
 
-import Temp1 from './temp1';
-import Temp5 from './temp5';
-import Temp from './temp';
-import Temp9 from './temp9'
-import Temp7 from './temp7'
+import Temp1 from './BombFinanceSummary';
+import Temp5 from './BombFarms';
+import Temp from './Bonds';
 
 
 
@@ -142,7 +140,7 @@ const Bond: React.FC = () => {
 
   return (
     <Switch>
-      <Page >
+      <Page>
         
               <Helmet>
         <title>{TITLE}</title>
@@ -150,49 +148,11 @@ const Bond: React.FC = () => {
            
   
           
-         
-            <CardContent className='mybasecard' >
-            <StyledBond >
-           
-            <Temp1/>
-            <div style={{display:'flex'}}>
-              <div> 
-              <div  style={{width:"700px",marginLeft:"23px"}}>
-              <a style={{
-                    marginBottom:"5px",
-                    color: "#9EE6FF",
-                    float:'right'
-                  }} href='#'>Read Investment Stratergy {`>`} </a>
-              <div  style={{width:"700px" ,marginTop:"10px"}}> 
-                 
-                  <Button href='https://bombbshare.medium.com/the-bomb-cycle-how-to-print-forever-e89dc82c12e5' style={{height:"50px"}} fullWidth className='mybtn3' >Invest Now</Button>
-                </div>
-                <div style={{display:'flex'}}>
-                <div style={{width:"342px",marginTop:"5px",}}>
-                  <Button href='https://discord.bomb.money' style={{height:"50px"}} fullWidth className='mybtn2 '>Chat on Discord</Button>
-                </div>
-                <div style={{marginLeft:"15px",
-                marginTop:"5px",
-                width:"342px"}}>
-                  <Button href='https://docs.bomb.money/welcome-start-here/readme' style={{height:"50px"}} fullWidth className='mybtn2 '>Read Docs</Button>
-                </div>
-                </div>
-              </div>
-                
-
-
-              <Temp9 />
-              </div>
-           
-           <Temp7/>
-            </div>
-          
-           <Temp5/>
-           <Temp/>
-        
-            </StyledBond>
+          <Card >
+            <CardContent className='mysecondcard temp'>
+            Latest News
             </CardContent>
-           
+            </Card>
       </Page>
     </Switch>
   );
@@ -209,7 +169,6 @@ const Bond: React.FC = () => {
 
 
 const StyledBond = styled.div`
-background-color: none;
 justify-content: space-between;
   @media (max-width: 768px) {
     width: 100%;

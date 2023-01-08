@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useMemo} from 'react';
-import Page from '../../components/Page copy';
+import Page from '../../components/Page';
 import {createGlobalStyle} from 'styled-components';
 import {Route, Switch, useRouteMatch} from 'react-router-dom';
 import PageHeader from '../../components/PageHeader';
@@ -51,9 +51,16 @@ import { AddIcon, RemoveIcon } from '../../components/icons';
 import useEarnings from '../../hooks/useEarnings';
 import useBanks from '../../hooks/useBanks';
 import useStakedBalance from '../../hooks/useStakedBalance';
-import Temp3 from './temp3';
-import Temp4 from './temp4';
+
 import useHarvest from '../../hooks/useHarvest';
+
+import Temp1 from './BombFinanceSummary';
+import Temp5 from './BombFarms';
+import Temp from './Bonds';
+import Temp9 from './Boardroom'
+import Temp7 from './News'
+
+
 
 
 const TITLE = 'bomb.money | Bonds'
@@ -135,7 +142,7 @@ const Bond: React.FC = () => {
 
   return (
     <Switch>
-      <Page>
+      <Page >
         
               <Helmet>
         <title>{TITLE}</title>
@@ -143,52 +150,49 @@ const Bond: React.FC = () => {
            
   
           
-          <Card >
-            <CardContent className='mythirdcard'>
-            <StyledBond >
-            <Div4>
-            
-
-            <div>
-                   <Mytitle>
-            <h1>Bomb Farms</h1>
-           </Mytitle>
-           <Head
-           
-           >
-           
-                 <Typography>Stake your LP tokens in our farms to start earning $BSHARE</Typography>
-            
-           
-
-            
-   
-          </Head>
-                    </div>   
-                    <Button
-                onClick={onReward}
-               // className={earnings.eq(0) ? 'shinyButtonDisabled' : 'shinyButton'}
-               // disabled={earnings.eq(0)}
-               
-               className={'shinyButton'}
-               style={{
-                marginLeft:"550px"
-               }}
-              >
-                Claim All <TokenSymbol symbol="BSHARE" size={20} />
-              </Button>
-
-            </Div4>
          
-            <Temp3/>
-        
-        <Temp4/>
-     
-            
+            <CardContent className='mybasecard' >
+            <StyledBond >
+           
+            <Temp1/>
+            <div style={{display:'flex'}}>
+              <div> 
+              <div  style={{width:"700px",marginLeft:"23px"}}>
+              <a style={{
+                    marginBottom:"5px",
+                    color: "#9EE6FF",
+                    float:'right'
+                  }} href='#'>Read Investment Stratergy {`>`} </a>
+              <div  style={{width:"700px" ,marginTop:"10px"}}> 
+                 
+                  <Button href='https://bombbshare.medium.com/the-bomb-cycle-how-to-print-forever-e89dc82c12e5' style={{height:"50px"}} fullWidth className='mybtn3' >Invest Now</Button>
+                </div>
+                <div style={{display:'flex'}}>
+                <div style={{width:"342px",marginTop:"5px",}}>
+                  <Button href='https://discord.bomb.money' style={{height:"50px"}} fullWidth className='mybtn2 '>Chat on Discord</Button>
+                </div>
+                <div style={{marginLeft:"15px",
+                marginTop:"5px",
+                width:"342px"}}>
+                  <Button href='https://docs.bomb.money/welcome-start-here/readme' style={{height:"50px"}} fullWidth className='mybtn2 '>Read Docs</Button>
+                </div>
+                </div>
+              </div>
+                
+
+
+              <Temp9 />
+              </div>
+           
+           <Temp7/>
+            </div>
+          
+           <Temp5/>
+           <Temp/>
         
             </StyledBond>
             </CardContent>
-            </Card>
+           
       </Page>
     </Switch>
   );
@@ -205,8 +209,8 @@ const Bond: React.FC = () => {
 
 
 const StyledBond = styled.div`
-
-
+background-color: none;
+justify-content: space-between;
   @media (max-width: 768px) {
     width: 100%;
     flex-flow: column nowrap;

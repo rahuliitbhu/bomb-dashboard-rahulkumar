@@ -48,16 +48,18 @@ import useModal from '../../hooks/useModal';
 import DepositModal from '../Bank/components/DepositModal';
 import WithdrawModal from '../Bank/components/WithdrawModal';
 import { AddIcon, RemoveIcon } from '../../components/icons';
-const BackgroundImage = createGlobalStyle`
-  body {
-    background: url(${HomeImage}) repeat !important;
-    background-size: cover !important;
-    background-color: #171923;
-  }
-`;
+import useEarnings from '../../hooks/useEarnings';
+import useBanks from '../../hooks/useBanks';
+import useStakedBalance from '../../hooks/useStakedBalance';
+import Temp3 from './Bomb_Btcb';
+import Temp4 from './Bshare_Bnb';
+import useHarvest from '../../hooks/useHarvest';
+
+
 const TITLE = 'bomb.money | Bonds'
 
 const Bond: React.FC = () => {
+    const [banks] = useBanks();
   const {path} = useRouteMatch();
   const bombFinance = useBombFinance();
   const addTransaction = useTransactionAdder();
@@ -65,52 +67,9 @@ const Bond: React.FC = () => {
   const bombStat = useBombStats();
   const cashPrice = useCashPriceInLastTWAP();
   const bShareStats = usebShareStats();
-  const bondsPurchasable = useBondsPurchasable();
-
-  const bondBalance = useTokenBalance(bombFinance?.BBOND);
- 
-
-
-  const bondScale = (Number(cashPrice) / 100000000000000).toFixed(4); 
-
-  //bomb stats
-  const bombPriceInDollars = useMemo(
-    () => (bombStat ? Number(bombStat.priceInDollars).toFixed(2) : null),
-    [bombStat],
-  );
-  const bombPriceInBNB = useMemo(() => (bombStat ? Number(bombStat.tokenInFtm).toFixed(4) : null), [bombStat]);
-  const bombCirculatingSupply = useMemo(() => (bombStat ? String(bombStat.circulatingSupply) : null), [bombStat]);
-  const bombTotalSupply = useMemo(() => (bombStat ? String(bombStat.totalSupply) : null), [bombStat]);
-
-
-  //bshare stats
-  const bSharePriceInDollars = useMemo(
-    () => (bShareStats ? Number(bShareStats.priceInDollars).toFixed(2) : null),
-    [bShareStats],
-  );
-  const bSharePriceInBNB = useMemo(
-    () => (bShareStats ? Number(bShareStats.tokenInFtm).toFixed(4) : null),
-    [bShareStats],
-  );
-  const bShareCirculatingSupply = useMemo(
-    () => (bShareStats ? String(bShareStats.circulatingSupply) : null),
-    [bShareStats],
-  );
-  const bShareTotalSupply = useMemo(() => (bShareStats ? String(bShareStats.totalSupply) : null), [bShareStats]);
-
-
-  //tbond stats
   
-  const tBondPriceInDollars = useMemo(
-    () => (tBondStats ? Number(tBondStats.priceInDollars).toFixed(2) : null),
-    [tBondStats],
-  );
-  const tBondPriceInBNB = useMemo(() => (tBondStats ? Number(tBondStats.tokenInFtm).toFixed(4) : null), [tBondStats]);
-  const tBondCirculatingSupply = useMemo(
-    () => (tBondStats ? String(tBondStats.circulatingSupply) : null),
-    [tBondStats],
-  );
-  const tBondTotalSupply = useMemo(() => (tBondStats ? String(tBondStats.totalSupply) : null), [tBondStats]);
+  
+
 
   //
   const cashStat = useCashPriceInEstimatedTWAP();
@@ -120,15 +79,16 @@ const Bond: React.FC = () => {
 
   const { to } = useTreasuryAllocationTimes();
   
-  const stakedBalance = useStakedBalanceOnBoardroom();
+  const stakedBalance = useStakedBalance(banks[4].contract,banks[4].poolId);
 
   //************************************** */
-  const earnings = useEarningsOnBoardroom();
+  //const earnings = useEarningsOnBoardroom();
+  const earnings = useEarnings(banks[4].contract,banks[4].earnTokenName,banks[4].poolId);
  
 
   const tokenPriceInDollars = useMemo(
-    () => (bombStat ? Number(bombStat.priceInDollars).toFixed(2) : null),
-    [bombStat],
+    () => (bShareStats ? Number(bShareStats.priceInDollars).toFixed(2) : null),
+    [bShareStats],
   );
 
   const earnedInDollars = (Number(tokenPriceInDollars) * Number(getDisplayBalance(earnings))).toFixed(2);
@@ -138,8 +98,8 @@ const Bond: React.FC = () => {
  
  
 
-  const stakedTokenPriceInDollars = useStakedTokenPriceInDollars('BSHARE', bombFinance.BSHARE);
-  const tokenBsharePriceInDollars = useMemo(
+  const stakedTokenPriceInDollars = useStakedTokenPriceInDollars(banks[4].depositTokenName,banks[4].depositToken);
+  const tokenBOMBtoBTCBPriceInDollars = useMemo(
     () =>
       stakedTokenPriceInDollars
         ? (Number(stakedTokenPriceInDollars) * Number(getDisplayBalance(stakedBalance))).toFixed(2).toString()
@@ -148,40 +108,12 @@ const Bond: React.FC = () => {
   );
 
 
-  const {onReward} = useHarvestFromBoardroom();
-  const [approveStatus, approve] = useApprove(bombFinance.BSHARE, bombFinance.contracts.Boardroom.address);
-
-
-  const {onStake} = useStakeToBoardroom();
-  const {onWithdraw} = useWithdrawFromBoardroom();
-  const canWithdrawFromBoardroom = useWithdrawCheck();
-
-  const tokenBalance = useTokenBalance(bombFinance.BSHARE);
-  
-  const [onPresentDeposit, onDismissDeposit] = useModal(
-    <DepositModal
-      max={tokenBalance}
-      onConfirm={(value) => {
-        onStake(value);
-        onDismissDeposit();
-      } }
-      tokenName={'BShare'} decimals={0}    />,
-  );
-
-  const [onPresentWithdraw, onDismissWithdraw] = useModal(
-    <WithdrawModal
-      max={stakedBalance}
-      onConfirm={(value) => {
-        onWithdraw(value);
-        onDismissWithdraw();
-      }}
-      tokenName={'BShare'}
-    />,
-  );
+  const {onReward} = useHarvest(banks[2]);
 
 
 
   const show=()=>{
+    console.log("this is bank",banks)
     console.log("this is bond stat",tBondStats)
     console.log("this is bomb stat",bombStat)
     //console.log("this is bomb finance",bombFinance)
@@ -204,7 +136,7 @@ const Bond: React.FC = () => {
   return (
     <Switch>
       <Page>
-        <BackgroundImage />
+        
               <Helmet>
         <title>{TITLE}</title>
       </Helmet>
@@ -212,126 +144,48 @@ const Bond: React.FC = () => {
   
           
           <Card >
-            <CardContent className='mycard'>
+            <CardContent className='mythirdcard'>
             <StyledBond >
-          
-            <div>
-            
             <Div4>
-            <TokenSymbol symbol="BSHARE" size={40} />
+            
 
             <div>
                    <Mytitle>
-            Bonm Finance Summary
+            <h1>Bomb Farms</h1>
            </Mytitle>
            <Head
            
            >
            
-                 <Typography>Stake BSHARE and earn BOMB every epoch</Typography>
+                 <Typography>Stake your LP tokens in our farms to start earning $BSHARE</Typography>
             
            
-           <div 
-           style={{float:'right',
-                         marginLeft:"570px"}}
-
-           >
-                    <Typography>TVL:${TVL}</Typography>
-           </div>
 
             
    
           </Head>
                     </div>   
-        
-
-            </Div4>
-  
-    
-          </div>
-           
-          <div style={{float:'right'}}>
-          <Typography >Total Staked:<TokenSymbol symbol="BSHARE" size={20} />{getDisplayBalance(totalStaked)} </Typography>
-          </div>
-
-           
-           
-
-           {/* here is my table */}
-     
-           <Div1>
-
-            
-          
-           
-             <div>
-             <Typography>Earned:</Typography> 
-              <Typography><TokenSymbol symbol="BOMB" size={20} />{getDisplayBalance(earnings)} </Typography>
-              <Typography>{`≈ $${earnedInDollars}`} </Typography>
-             </div>
-              
-
-             <div>
-             <Typography>Your Stake:</Typography> 
-              <Typography><TokenSymbol symbol="BSHARE" size={20} />{getDisplayBalance(stakedBalance)} </Typography>
-              <Typography>{`≈ $${tokenPriceInDollars}`} </Typography>
-             </div>
-              
-
-              <div>
-            {/* <Button onClick={()=>show()}>Click</Button> */}
-            <Div2>
-            <Button
-                onClick={onPresentDeposit}
-                
-                //className={earnings.eq(0) ? 'shinyButtonDisabled' : 'shinyButton'}
-               // disabled={earnings.eq(0)}
-               className={'shinyButton'}
-              >
-                Deposite
-              </Button>
-              <Button
-                onClick={onPresentWithdraw}
-                //disabled={!canWithdrawFromBoardroom}
-               //  className={earnings.eq(0) ? 'shinyButtonDisabled' : 'shinyButton'}
-               // disabled={earnings.eq(0)}
-               className={'shinyButton'}
-              >
-                Withdraw
-              </Button>
-            </Div2>
-          
-
-
-            <Div3>
-            <Button
+                    <Button
                 onClick={onReward}
                // className={earnings.eq(0) ? 'shinyButtonDisabled' : 'shinyButton'}
                // disabled={earnings.eq(0)}
-               fullWidth
+               
                className={'shinyButton'}
+               style={{
+                marginLeft:"550px"
+               }}
               >
-                Claim Reward
+                Claim All <TokenSymbol symbol="BSHARE" size={20} />
               </Button>
-            </Div3>
-            
 
-               {/* <Button
-                  disabled={approveStatus !== ApprovalState.NOT_APPROVED}
-                  className={approveStatus === ApprovalState.NOT_APPROVED ? 'shinyButton' : 'shinyButtonDisabled'}
-                  style={{marginTop: '20px'}}
-                  onClick={approve}
-                >
-                  Deposite
-                </Button> */}
-            </div>
-
-
-
-           </Div1>
-             
+            </Div4>
+         
+            <Temp3/>
+        
+        <Temp4/>
      
-                
+            
+        
             </StyledBond>
             </CardContent>
             </Card>
@@ -351,7 +205,8 @@ const Bond: React.FC = () => {
 
 
 const StyledBond = styled.div`
-justify-content: space-between;
+
+
   @media (max-width: 768px) {
     width: 100%;
     flex-flow: column nowrap;
@@ -381,6 +236,10 @@ const StyledStatsWrapper = styled.div`
 `;
 
 const Mytitle =styled.div`
+display:flex;
+margin:5px;
+
+
 `
 
 const Head = styled.div`
@@ -390,12 +249,13 @@ justify-content: space-between;
 
 `;
 const Div1 = styled.div`
-margin-top:50px;
+
 display:flex;
 justify-content: space-between;
 
 `;
 const Div2 = styled.div`
+margin-top:50px;
 display:flex;
 justify-content: space-between;
 

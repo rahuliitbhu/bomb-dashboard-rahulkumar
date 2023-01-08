@@ -57,6 +57,10 @@ const BackgroundImage = createGlobalStyle`
 `;
 const TITLE = 'bomb.money | Boardroom'
 
+
+//This is Boardroom
+
+
 const Bond: React.FC = () => {
 
   const bombFinance = useBombFinance();
