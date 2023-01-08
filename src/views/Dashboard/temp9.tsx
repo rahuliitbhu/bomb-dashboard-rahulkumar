@@ -55,70 +55,22 @@ const BackgroundImage = createGlobalStyle`
     background-color: #171923;
   }
 `;
-const TITLE = 'bomb.money | Bonds'
+const TITLE = 'bomb.money | Boardroom'
 
 const Bond: React.FC = () => {
-  const {path} = useRouteMatch();
+
   const bombFinance = useBombFinance();
   const addTransaction = useTransactionAdder();
-  const tBondStats = useBondStats();
+
   const bombStat = useBombStats();
-  const cashPrice = useCashPriceInLastTWAP();
-  const bShareStats = usebShareStats();
-  const bondsPurchasable = useBondsPurchasable();
-
-  const bondBalance = useTokenBalance(bombFinance?.BBOND);
- 
 
 
-  const bondScale = (Number(cashPrice) / 100000000000000).toFixed(4); 
 
-  //bomb stats
-  const bombPriceInDollars = useMemo(
-    () => (bombStat ? Number(bombStat.priceInDollars).toFixed(2) : null),
-    [bombStat],
-  );
-  const bombPriceInBNB = useMemo(() => (bombStat ? Number(bombStat.tokenInFtm).toFixed(4) : null), [bombStat]);
-  const bombCirculatingSupply = useMemo(() => (bombStat ? String(bombStat.circulatingSupply) : null), [bombStat]);
-  const bombTotalSupply = useMemo(() => (bombStat ? String(bombStat.totalSupply) : null), [bombStat]);
-
-
-  //bshare stats
-  const bSharePriceInDollars = useMemo(
-    () => (bShareStats ? Number(bShareStats.priceInDollars).toFixed(2) : null),
-    [bShareStats],
-  );
-  const bSharePriceInBNB = useMemo(
-    () => (bShareStats ? Number(bShareStats.tokenInFtm).toFixed(4) : null),
-    [bShareStats],
-  );
-  const bShareCirculatingSupply = useMemo(
-    () => (bShareStats ? String(bShareStats.circulatingSupply) : null),
-    [bShareStats],
-  );
-  const bShareTotalSupply = useMemo(() => (bShareStats ? String(bShareStats.totalSupply) : null), [bShareStats]);
-
-
-  //tbond stats
-  
-  const tBondPriceInDollars = useMemo(
-    () => (tBondStats ? Number(tBondStats.priceInDollars).toFixed(2) : null),
-    [tBondStats],
-  );
-  const tBondPriceInBNB = useMemo(() => (tBondStats ? Number(tBondStats.tokenInFtm).toFixed(4) : null), [tBondStats]);
-  const tBondCirculatingSupply = useMemo(
-    () => (tBondStats ? String(tBondStats.circulatingSupply) : null),
-    [tBondStats],
-  );
-  const tBondTotalSupply = useMemo(() => (tBondStats ? String(tBondStats.totalSupply) : null), [tBondStats]);
-
-  //
-  const cashStat = useCashPriceInEstimatedTWAP();
   const totalStaked = useTotalStakedOnBoardroom();
-  const currentEpoch = useCurrentEpoch();
+
   const TVL = useTotalValueLocked();
 
-  const { to } = useTreasuryAllocationTimes();
+
   
   const stakedBalance = useStakedBalanceOnBoardroom();
 
@@ -181,24 +133,24 @@ const Bond: React.FC = () => {
 
 
 
-  const show=()=>{
-    console.log("this is bond stat",tBondStats)
-    console.log("this is bomb stat",bombStat)
-    //console.log("this is bomb finance",bombFinance)
-    console.log("this is bshare",bShareStats)
-    console.log("this is cashstat",cashStat)
-    console.log("this is totalstacked",totalStaked)
-    console.log("this is currenepoch",currentEpoch)
-    console.log("this is tvl",TVL)
+  // const show=()=>{
+  //   console.log("this is bond stat",tBondStats)
+  //   console.log("this is bomb stat",bombStat)
+  //   //console.log("this is bomb finance",bombFinance)
+  //   console.log("this is bshare",bShareStats)
+  //   console.log("this is cashstat",cashStat)
+  //   console.log("this is totalstacked",totalStaked)
+  //   console.log("this is currenepoch",currentEpoch)
+  //   console.log("this is tvl",TVL)
 
-    console.log("this is stakeBalance",stakedBalance)
-    console.log("this is total stake",totalStaked)
+  //   console.log("this is stakeBalance",stakedBalance)
+  //   console.log("this is total stake",totalStaked)
 
     
 
 
 
-  }
+  // }
  
 
   return (
@@ -238,7 +190,7 @@ const Bond: React.FC = () => {
                          marginLeft:"70px"}}
 
            >
-                    <Typography>TVL:${TVL}</Typography>
+                    <Typography>TVL:${TVL.toFixed(2)}</Typography>
            </div>
 
             
